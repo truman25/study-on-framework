@@ -1,0 +1,63 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /springboot
+    
+spring:
+  output:
+    ansi:
+      #多彩输出
+      enabled: detect
+  profiles:
+    active: 
+    - dev
+  # rabbitmq相关配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  # REDIS (RedisProperties)
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接密码（默认为空）
+    password: 
+    jedis:
+      pool:
+                           # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 8
+                           # 连接池中的最大空闲连接
+        max-idle: 8
+                           # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1
+                            # 连接池中的最小空闲连接
+        min-idle: 0
+    # Redis服务器连接端口
+    port: 6379
+              # 连接超时时间（毫秒）
+    timeout: 200
+  mvc:
+    view:
+                      #路径,在webapp文件夹下新建文件夹WEB-INF,在往下建文件夹jsp
+      prefix: /jsptest/
+                     #文件名的后缀,例如:index.jsp,放在jsp文件夹下
+      suffix: .jsp
+  resources:
+    #Spring Boot的默认静态资源的路径为： spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ 优先级从从高到低。
+    static-locations:
+    - classpath:/static/
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+#  jpa:
+#    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+mybatis:
+  type-aliases-package: com.example.demo.model
+
+      
